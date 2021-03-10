@@ -11,10 +11,10 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
 requires = [
     'setuptools>=40.3.0',
     'easydict==1.9',
-    'numpy==1.17.0',
+    'numpy',
     'tqdm==4.31.1',
-    'torchvision==0.4.0',
-    'torch==1.2.0',
+    'torchvision',
+    'torch',
     'opencv_python',
     'Pillow==7.1.2',
     'tensorboardX==2.0',
