@@ -12,6 +12,10 @@ import torch
 import numpy as np
 import torch.nn.functional as F
 
+import logging
+from structlog import get_logger
+log = get_logger()
+
 
 from anti_spoofing.model_lib.MiniFASNet import MiniFASNetV1, MiniFASNetV2,MiniFASNetV1SE,MiniFASNetV2SE
 from anti_spoofing.data_io import transform as trans
