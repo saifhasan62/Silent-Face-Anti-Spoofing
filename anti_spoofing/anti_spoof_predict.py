@@ -91,9 +91,9 @@ class AntiSpoofPredict(Detection):
         ])
         img = test_transform(img)
 #         log.info(img)
-        log.info('step 1 completed')
+#         log.info('step 1 completed')
         img = img.unsqueeze(0).to(self.device)
-        log.info('step 2 started')
+#         log.info('step 2 started')
 #         log.info(img)
 #         self._load_model(model_path)
         
