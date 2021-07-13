@@ -95,18 +95,18 @@ class AntiSpoofPredict(Detection):
 #         img = img.unsqueeze(0).to(self.device)
         img = torch.unsqueeze(img,0).to(self.device)
         log.info('step 2 started')
-#         log.info(img)
-#         self._load_model(model_path)
+        log.info(img)
+        self._load_model(model_path)
         
-        oom = False
-        try:
-            self._load_model(model_path)
-        except RuntimeError: # Out of memory
-            oom = True
+#         oom = False
+#         try:
+#             self._load_model(model_path)
+#         except RuntimeError: # Out of memory
+#             oom = True
 
-        if oom:
-            for _ in range(model_path):
-                self._load_model(1)
+#         if oom:
+#             for _ in range(model_path):
+#                 self._load_model(1)
         
         self.model.eval()
         with torch.no_grad():
