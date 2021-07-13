@@ -57,11 +57,9 @@ class Detection:
 class AntiSpoofPredict(Detection):
     def __init__(self, device_id):
         super(AntiSpoofPredict, self).__init__()
-#         self.device = torch.device("cpu")
-        self.device = torch.device("cuda:{}".format(device_id)
-                                   if torch.cuda.is_available() else "cpu")
-        log.info('device info')
-        log.info(self.device)
+        self.device = torch.device("cpu")
+#         self.device = torch.device("cuda:{}".format(device_id)
+#                                    if torch.cuda.is_available() else "cpu")
 
     def _load_model(self, model_path):
         # define model
@@ -90,21 +88,13 @@ class AntiSpoofPredict(Detection):
             trans.ToTensor(),
         ])
         img = test_transform(img)
-#         log.info(img)
-        log.info('step 1 completed')
-#         img = img.unsqueeze(0).to(self.device)
-        img = torch.unsqueeze(img,0).to(self.device)
-        log.info('step 2 started')
-        log.info(img)
+        img = img.unsqueeze(0).to(self.device)
+#         img = torch.unsqueeze(img,0).to(self.device)
         self._load_model(model_path)
-    
-        
         self.model.eval()
         with torch.no_grad():
             result = self.model.forward(img)
-            log.info('step 3 started')
             result = F.softmax(result).cpu().numpy()
-            log.info('step 4 completed')
         return result
 
 
