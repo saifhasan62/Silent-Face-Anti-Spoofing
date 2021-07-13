@@ -57,9 +57,9 @@ class Detection:
 class AntiSpoofPredict(Detection):
     def __init__(self, device_id):
         super(AntiSpoofPredict, self).__init__()
-        self.device = torch.device("cpu")
-#         self.device = torch.device("cuda:{}".format(device_id)
-#                                    if torch.cuda.is_available() else "cpu")
+#         self.device = torch.device("cpu")
+        self.device = torch.device("cuda:{}".format(device_id)
+                                   if torch.cuda.is_available() else "cpu")
         log.info('device info')
         log.info(self.device)
 
@@ -97,16 +97,7 @@ class AntiSpoofPredict(Detection):
         log.info('step 2 started')
         log.info(img)
         self._load_model(model_path)
-        
-#         oom = False
-#         try:
-#             self._load_model(model_path)
-#         except RuntimeError: # Out of memory
-#             oom = True
-
-#         if oom:
-#             for _ in range(model_path):
-#                 self._load_model(1)
+    
         
         self.model.eval()
         with torch.no_grad():
