@@ -91,10 +91,10 @@ class AntiSpoofPredict(Detection):
         ])
         img = test_transform(img)
 #         log.info(img)
-#         log.info('step 1 completed')
+        log.info('step 1 completed')
 #         img = img.unsqueeze(0).to(self.device)
         img = torch.unsqueeze(img,0).to(self.device)
-#         log.info('step 2 started')
+        log.info('step 2 started')
 #         log.info(img)
 #         self._load_model(model_path)
         
@@ -111,7 +111,9 @@ class AntiSpoofPredict(Detection):
         self.model.eval()
         with torch.no_grad():
             result = self.model.forward(img)
+            log.info('step 3 started')
             result = F.softmax(result).cpu().numpy()
+            log.info('step 4 completed')
         return result
 
 
