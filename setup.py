@@ -16,7 +16,7 @@ requires = [
     'torchvision',
     'torch',
     'opencv_python',
-    'Pillow==7.1.2',
+    'Pillow',
     'tensorboardX==2.0',
 ]
 
